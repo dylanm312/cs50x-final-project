@@ -60,10 +60,9 @@ cd vehicle-maintenance-tracker
 
 ### Apply Migrations
 
-Navigate to the project directory and apply database migrations:
+Apply database migrations:
 
 ```bash
-cd ui
 python manage.py migrate
 ```
 

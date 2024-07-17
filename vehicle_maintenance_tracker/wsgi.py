@@ -1,5 +1,5 @@
 """
-WSGI config for personal_crm project.
+WSGI config for vehicle_maintenance_tracker project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'personal_crm.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vehicle_maintenance_tracker.settings')
 
 application = get_wsgi_application()

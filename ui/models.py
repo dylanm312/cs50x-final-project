@@ -15,6 +15,9 @@ class Vehicle(models.Model):
     vin = models.CharField(max_length=17)
     mileage = models.FloatField(default=0)
     # TODO: add photo field
+    
+    def __str__(self) -> str:
+        return f"{self.name} ({self.license_plate})"
 
 class MaintenanceItem(models.Model):
     """
@@ -24,6 +27,9 @@ class MaintenanceItem(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
     # TODO: add photo field
+    
+    def __str__(self) -> str:
+        return f"{self.name}: {self.description}"
     
 class VehicleEvent(models.Model):
     """
@@ -37,3 +43,8 @@ class VehicleEvent(models.Model):
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(default=timezone.now)
     maintenance_item = models.ForeignKey(MaintenanceItem, on_delete=models.SET_NULL, blank=True, null=True)
+    
+    def __str__(self) -> str:
+        return f"{self.name} was performed on {self.vehicle} on {self.timestamp}"
+
+

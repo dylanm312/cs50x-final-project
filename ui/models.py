@@ -13,7 +13,7 @@ class Vehicle(models.Model):
     license_plate = models.CharField(max_length=10)
     license_plate_state = models.CharField(max_length=2)
     vin = models.CharField(max_length=17)
-    mileage = models.DecimalField(default=0, decimal_places=1)
+    mileage = models.DecimalField(default=0, max_digits=9, decimal_places=1)
     # TODO: add photo field
     
     def __str__(self) -> str:

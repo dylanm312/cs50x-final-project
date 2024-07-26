@@ -2,4 +2,29 @@
 
 {% block body %}
     <h1>Hello world!</h1>
+    <div class="vehicle-list">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Vehicle Name</th>
+                    <th>License Plate</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehicle in vehicle_list %}
+                <tr>
+                    <td>{{ vehicle.name }}</td>
+                    <td>{{ vehicle.license_plate }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'edit_vehicle' vehicle.pk %}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="" role="button">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class="btn btn-primary" href="" role="button">+ Add</a>
+    </div>
+    
 {% endblock body %}

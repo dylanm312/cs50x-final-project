@@ -1,0 +1,13 @@
+{% extends "ui/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <h1 class="centered">{{ vehicle.name }}</h1>
+    <div>
+        <form class="form" method="post"> {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-primary" value="Update">
+        </form>
+    </div>
+    
+{% endblock body %}

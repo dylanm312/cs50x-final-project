@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
 
 # Create your models here.
 class Vehicle(models.Model):
@@ -18,6 +19,9 @@ class Vehicle(models.Model):
     
     def __str__(self) -> str:
         return f"{self.name} ({self.license_plate})"
+    
+    def get_absolute_url(self):
+        return reverse('edit_vehicle', kwargs={'pk': self.pk})
 
 class MaintenanceItem(models.Model):
     """

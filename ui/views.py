@@ -13,11 +13,7 @@ class IndexView(generic.ListView):
     def get_queryset(self) -> QuerySet[Vehicle]:
         return Vehicle.objects.all()
     
-class VehicleDetailView(generic.DetailView):
-    template_name = "ui/edit_vehicle.html"
-    context_object_name = "vehicle"
-    
-    def get_object(self) -> Vehicle:
-        return get_object_or_404(Vehicle, pk=self.kwargs["pk"])
-        # return VehicleEvent.objects.filter(vehicle_id=vehicle.id).order_by("timestamp")
-        
+class VehicleUpdateView(generic.edit.UpdateView):
+    model = Vehicle
+    fields = ["name", "year", "make", "model", "color", "license_plate", "license_plate_state", "vin", "mileage"]
+    template_name_suffix = "_update_form"

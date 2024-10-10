@@ -1,6 +1,4 @@
-from typing import Any
 from django.db.models.query import QuerySet
-from django.shortcuts import get_object_or_404
 from django.views import generic
 
 from .models import Vehicle, VehicleEvent
@@ -13,7 +11,18 @@ class IndexView(generic.ListView):
     def get_queryset(self) -> QuerySet[Vehicle]:
         return Vehicle.objects.all()
     
+class VehicleCreateView(generic.edit.CreateView):
+    model = Vehicle
+    fields = ["name", "year", "make", "model", "color", "license_plate", "license_plate_state", "vin", "mileage"]
+    template_name_suffix = "_form"
+    success_url = "/"
+    
 class VehicleUpdateView(generic.edit.UpdateView):
     model = Vehicle
     fields = ["name", "year", "make", "model", "color", "license_plate", "license_plate_state", "vin", "mileage"]
-    template_name_suffix = "_update_form"
+    template_name_suffix = "_form"
+    success_url = "/"
+    
+class VehicleDeleteView(generic.DeleteView):
+    model = Vehicle
+    success_url = "/"

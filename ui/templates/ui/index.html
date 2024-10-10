@@ -18,13 +18,16 @@
                     <td>{{ vehicle.license_plate }}</td>
                     <td>
                         <a class="btn btn-primary" href="{% url 'edit_vehicle' vehicle.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="" role="button">Delete</a>
+                        <form class="form d-inline" action="{% url 'delete_vehicle' vehicle.pk %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </form>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a class="btn btn-primary" href="" role="button">+ Add</a>
+        <a class="btn btn-primary" href="{% url 'create_vehicle' %}" role="button">+ Add</a>
     </div>
     
 {% endblock body %}

@@ -4,10 +4,11 @@
 {% block body %}
     <h1 class="centered">{{ vehicle.name }}</h1>
     <div>
-        <form class="form" method="post"> {% csrf_token %}
+        <form class="form d-inline" method="post"> {% csrf_token %}
             {{ form|crispy }}
             <input type="submit" class="btn btn-primary" value="Update">
         </form>
+        <button class="btn btn-outline-secondary d-inline" onClick="javascript:history.go(-1);">Back</button>
     </div>
     
 {% endblock body %}

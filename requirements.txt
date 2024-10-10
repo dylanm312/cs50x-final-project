@@ -1,2 +1,4 @@
 Django==5.*
 django-active-link==0.*
+django-crispy-forms==2.*
+crispy-bootstrap5==2024.*

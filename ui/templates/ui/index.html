@@ -14,7 +14,7 @@
             <tbody>
                 {% for vehicle in vehicle_list %}
                 <tr>
-                    <td>{{ vehicle.name }}</td>
+                    <td><a href="{% url 'view_vehicle' vehicle.pk %}">{{ vehicle.name }}</a></td>
                     <td>{{ vehicle.license_plate }}</td>
                     <td>
                         <a class="btn btn-primary" href="{% url 'edit_vehicle' vehicle.pk %}" role="button">Edit</a>

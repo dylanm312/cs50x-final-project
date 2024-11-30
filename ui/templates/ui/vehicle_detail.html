@@ -1,0 +1,17 @@
+{% extends "ui/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <h1 class="centered">{{ vehicle.name }}</h1>
+    <div>
+        <ul>
+            <li>Vehicle Name: {{ vehicle.name }}</li>
+            <li>License Plate: {{ vehicle.license_plate }}</li>
+            <li>Make: {{ vehicle.make }}</li>
+            <li>Model: {{ vehicle.model }}</li>
+            <li>Year: {{ vehicle.year }}</li>
+        </ul>
+        <button class="btn btn-outline-secondary d-inline" onClick="javascript:history.go(-1);">Back</button>
+    </div>
+    
+{% endblock body %}

@@ -23,6 +23,14 @@ class VehicleUpdateView(generic.edit.UpdateView):
     template_name_suffix = "_form"
     success_url = "/"
     
+class VehicleDetailView(generic.DetailView):
+    model = Vehicle
+    template_name_suffix = "_detail"
+    success_url = "/"
+    
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(**kwargs)
+    
 class VehicleDeleteView(generic.DeleteView):
     model = Vehicle
     success_url = "/"

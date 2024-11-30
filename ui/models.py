@@ -49,6 +49,6 @@ class VehicleEvent(models.Model):
     maintenance_item = models.ForeignKey(MaintenanceItem, on_delete=models.SET_NULL, blank=True, null=True)
     
     def __str__(self) -> str:
-        return f"{self.name} was performed on {self.vehicle} on {self.timestamp}"
+        return f"{self.name} was performed on {self.vehicle} on {self.timestamp.strftime("%Y-%m-%d")} at {self.vehicle.mileage} miles."
 
 

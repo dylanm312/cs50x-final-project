@@ -11,6 +11,13 @@ class IndexView(generic.ListView):
     def get_queryset(self) -> QuerySet[Vehicle]:
         return Vehicle.objects.all()
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["messages"] = VehicleEvent.objects.filter(vehicle__in=context["vehicle_list"]).order_by("-timestamp")[:5]
+        for message in context["messages"]:
+            message.type = "primary"
+        return context
+    
 class VehicleCreateView(generic.edit.CreateView):
     model = Vehicle
     fields = ["name", "year", "make", "model", "color", "license_plate", "license_plate_state", "vin", "mileage"]

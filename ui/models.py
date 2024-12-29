@@ -15,7 +15,6 @@ class Vehicle(models.Model):
     license_plate_state = models.CharField(max_length=2)
     vin = models.CharField(max_length=17)
     mileage = models.DecimalField(default=0, max_digits=9, decimal_places=1) # type: ignore
-    # TODO: add photo field
     
     def __str__(self) -> str:
         return f"{self.name} ({self.license_plate})"
@@ -30,7 +29,6 @@ class MaintenanceItem(models.Model):
     
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
-    # TODO: add photo field
     
     def __str__(self) -> str:
         return f"{self.name}: {self.description}"

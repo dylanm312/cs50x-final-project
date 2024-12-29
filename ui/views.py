@@ -43,7 +43,7 @@ class VehicleDetailView(generic.DetailView):
 class VehicleDeleteView(SuccessMessageMixin, generic.DeleteView):
     model = Vehicle
     success_url = reverse_lazy("index")
-    success_message = "Deleted vehicle '%(name)s'"
+    success_message = "Deleted vehicle"
     
     
     

@@ -1,3 +1,23 @@
 #navigationOffcanvasExpandButton {
     font-size: 150%;
 }
+
+h2 {
+    font-size: 1.5em;
+}
+
+.page-nav-buttons {
+    margin-top: 1em;
+}
+
+form {
+    width: 50%;
+}
+
+fieldset {
+    margin-bottom: 1em;
+}
+
+fieldset > * {
+    display: block;
+}

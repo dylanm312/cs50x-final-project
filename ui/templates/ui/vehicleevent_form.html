@@ -1,0 +1,40 @@
+{% extends "ui/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <h1 class="centered">{% if vehicleevent.name %}Edit{% else %}New{% endif %} maintenance event for {{ vehicleevent.vehicle.name }}</h1>
+    <div>
+        <form class="form" method="post"> {% csrf_token %}
+            <fieldset>
+                <legend>Name and description</legend>
+                <input class="form-control form-required" type="text" name="name" placeholder="Changed oil, rotated tires, etc." value="{{ vehicleevent.name }}" required />
+                <input class="form-control" type="textarea" name="description" placeholder="Added 5qts of Valvoline 5W-30" value="{{ vehicleevent.description }}" />
+            </fieldset>
+            <fieldset>
+                <legend>Select a maintenance item (if applicable)</legend>
+                {% for item in maintenance_options %}
+                <div class="form-field-wrapper">
+                {% if item.name == selected_maintenance_item.name %}
+                    <input type="radio" name="maintenance_item" value="{{ item.pk }}" checked />
+                {% else %}
+                    <input type="radio" name="maintenance_item" value="{{ item.pk }}" />
+                {% endif %}
+                    <label for="maintenance_item" title="{{ item.description }}">{{ item.name }}</label>
+                </div>
+                {% endfor %}
+            </fieldset>
+            <fieldset>
+                <legend>Enter the date of the maintenance event</legend>
+                <input class="form-control" type="datetime-local" name="timestamp" required />
+            </fieldset>
+            <fieldset>
+                <legend>Enter the mileage</legend>
+                <input class="form-control" type="number" name="mileage" required />
+            <div class="page-nav-buttons">
+                <input type="submit" class="btn btn-primary" value="Update">
+                <button class="btn btn-outline-secondary d-inline" onClick="javascript:history.go(-1);">Back</button>
+            </div>
+        </form>
+    </div>
+    
+{% endblock body %}

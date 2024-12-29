@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block body %}
-    <h1 class="centered">{{ vehicle.name }}</h1>
+    <h1 class="centered">{% if vehicle.name %}{{ vehicle.name }}{% else %}New Vehicle{% endif %}</h1>
     <div>
         <form class="form d-inline" method="post"> {% csrf_token %}
             {{ form|crispy }}

@@ -46,6 +46,7 @@ class VehicleEvent(models.Model):
     description = models.CharField(max_length=500)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(default=timezone.now)
+    mileage = models.DecimalField(default=0, max_digits=9, decimal_places=1) # type: ignore
     maintenance_item = models.ForeignKey(MaintenanceItem, on_delete=models.SET_NULL, blank=True, null=True)
     
     def __str__(self) -> str:

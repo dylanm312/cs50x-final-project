@@ -11,7 +11,43 @@
             <li>Model: {{ vehicle.model }}</li>
             <li>Year: {{ vehicle.year }}</li>
         </ul>
+    </div>
+    <div>
+        <h2>Maintenance History</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Timestamp</th>
+                    <th>Mileage</th>
+                    <th>Maintenance Item</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                <tr>
+                    <td>{{ event.name }}</td>
+                    <td>{{ event.description }}</td>
+                    <td>{{ event.timestamp }}</td>
+                    <td>{{ event.mileage }}</td>
+                    <td>{{ event.maintenance_item.name }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'edit_vehicle_event' vehicle.pk event.pk %}" role="button">Edit</a>
+                        <form class="form d-inline" action="{% url 'delete_vehicle_event' vehicle.pk event.pk %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="page-nav-buttons">
+        <a href="{% url 'create_vehicle_event' vehicle.pk %}" class="btn btn-primary d-inline" role="button">Add Maintenance +</button></a>
         <button class="btn btn-outline-secondary d-inline" onClick="javascript:history.go(-1);">Back</button>
     </div>
+    
     
 {% endblock body %}

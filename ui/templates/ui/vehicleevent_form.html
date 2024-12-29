@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block body %}
-    <h1 class="centered">{% if vehicleevent.name %}Edit{% else %}New{% endif %} maintenance event for {{ vehicleevent.vehicle.name }}</h1>
+    <h1 class="centered">{% if vehicleevent.name %}Edit{% else %}New{% endif %} vehicle event for {{ vehicleevent.vehicle.name }}</h1>
     <div>
         <form class="form" method="post"> {% csrf_token %}
             <fieldset>
@@ -11,7 +11,7 @@
                 <input class="form-control" type="textarea" name="description" placeholder="Added 5qts of Valvoline 5W-30" value="{{ vehicleevent.description }}" required />
             </fieldset>
             <fieldset>
-                <legend>Select a maintenance item (if applicable)</legend>
+                <legend>Select a maintenance item (optional)</legend>
                 {% for item in maintenance_options %}
                 <div class="form-field-wrapper">
                 {% if item == selected_maintenance_item %}

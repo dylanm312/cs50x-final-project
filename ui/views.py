@@ -89,10 +89,14 @@ class VehicleEventUpdateView(SuccessMessageMixin, generic.edit.UpdateView):
     success_url = reverse_lazy("index")
     success_message = "Updated maintenance event '%(name)s'"
     
+    def get_object(self):
+        return VehicleEvent.objects.get(pk=self.kwargs["event_pk"])
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         maintenance_options = MaintenanceItem.objects.all()
         context.update({"maintenance_options": maintenance_options})
+        
         # Mark selected maintenance option if any
         context.update({"selected_maintenance_item": self.object.maintenance_item})
         return context

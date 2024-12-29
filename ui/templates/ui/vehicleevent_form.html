@@ -14,7 +14,7 @@
                 <legend>Select a maintenance item (if applicable)</legend>
                 {% for item in maintenance_options %}
                 <div class="form-field-wrapper">
-                {% if item.name == selected_maintenance_item.name %}
+                {% if item == selected_maintenance_item %}
                     <input type="radio" name="maintenance_item" value="{{ item.pk }}" checked />
                 {% else %}
                     <input type="radio" name="maintenance_item" value="{{ item.pk }}" />
